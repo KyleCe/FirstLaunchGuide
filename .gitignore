@@ -8,3 +8,7 @@
 /.idea/**
 /.gradle/**
 /captures
+
+.gitattributes
+gradle/**
+gradlew
