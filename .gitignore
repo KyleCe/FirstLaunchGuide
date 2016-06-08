@@ -10,5 +10,4 @@
 /captures
 
 .gitattributes
-gradle/**
 gradlew
