@@ -39,7 +39,7 @@ public class GuideView extends FrameLayout {
 
     private void setViewPagerAndIndicator(View v) {
 
-        GuideImageAdapter adapter = new GuideImageAdapter();
+        GuideImageAdapter adapter = new GuideImageAdapter(getContext());
         mViewPager = (GuideSmoothViewPager) v.findViewById(R.id.guide_view_pager);
 
         final RadioGroup radioGroup = (RadioGroup) v.findViewById(R.id.radiogroup);
