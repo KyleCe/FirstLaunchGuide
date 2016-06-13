@@ -86,20 +86,23 @@ public class GuideImageAdapter extends PagerAdapter {
     }
 
     private void setImageWithResource(Integer imageId, ImageView image) {
+        if (mContext == null) {
+            image.setImageResource(imageId);
+            return;
+        }
+
         try {
             Bitmap targetBip = BitmapFactory.decodeStream(mContext.getResources().openRawResource(imageId));
             image.setImageBitmap(targetBip);
         } catch (Exception | OutOfMemoryError out) {
             try {
-                if (mContext != null) {
-                    Drawable drawable;
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                        drawable = mContext.getResources().getDrawable(R.drawable.guidepages_bg_01, mContext.getTheme());
-                    } else {
-                        drawable = mContext.getResources().getDrawable(R.drawable.guidepages_bg_01);
-                    }
-                    image.setImageDrawable(drawable);
+                Drawable drawable;
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    drawable = mContext.getResources().getDrawable(R.drawable.guidepages_bg_01, mContext.getTheme());
+                } else {
+                    drawable = mContext.getResources().getDrawable(R.drawable.guidepages_bg_01);
                 }
+                image.setImageDrawable(drawable);
             } catch (Throwable throwable) {
 
             }
