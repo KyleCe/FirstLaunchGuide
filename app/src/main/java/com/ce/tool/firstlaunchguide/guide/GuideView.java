@@ -17,13 +17,22 @@ import com.ce.tool.firstlaunchguide.R;
  */
 public class GuideView extends FrameLayout {
     private GuideSmoothViewPager mViewPager;
+    private ButtonClick mButtonClick;
+
+    public interface ButtonClick {
+        void onClick();
+    }
+
+    public void assignButtonClick(ButtonClick click) {
+        mButtonClick = click;
+    }
 
     public GuideView(Context context) {
-        this(context,null);
+        this(context, null);
     }
 
     public GuideView(Context context, AttributeSet attrs) {
-        this(context, attrs,0);
+        this(context, attrs, 0);
     }
 
     public GuideView(Context context, AttributeSet attrs, int defStyleAttr) {
@@ -35,6 +44,13 @@ public class GuideView extends FrameLayout {
         View base = LayoutInflater.from(context).inflate(R.layout.guide_view_layout, this);
         setViewPagerAndIndicator(base);
 
+        base.findViewById(R.id.create_account_btn).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mButtonClick == null) return;
+                mButtonClick.onClick();
+            }
+        });
     }
 
     private void setViewPagerAndIndicator(View v) {
