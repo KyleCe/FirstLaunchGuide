@@ -17,7 +17,10 @@ import com.ce.tool.firstlaunchguide.R;
  */
 public class GuideView extends FrameLayout {
     private GuideSmoothViewPager mViewPager;
+
     private ButtonClick mButtonClick;
+
+    private View mCreateAccountButton;
 
     public interface ButtonClick {
         void onClick();
@@ -44,13 +47,20 @@ public class GuideView extends FrameLayout {
         View base = LayoutInflater.from(context).inflate(R.layout.guide_view_layout, this);
         setViewPagerAndIndicator(base);
 
-        base.findViewById(R.id.create_account_btn).setOnClickListener(new OnClickListener() {
+        mCreateAccountButton = base.findViewById(R.id.create_account_btn);
+
+        mCreateAccountButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (mButtonClick == null) return;
                 mButtonClick.onClick();
             }
         });
+    }
+
+    public void enableButtonAndClickable(boolean clickable){
+        mCreateAccountButton.setClickable(clickable);
+        mCreateAccountButton.setEnabled(true);
     }
 
     private void setViewPagerAndIndicator(View v) {
