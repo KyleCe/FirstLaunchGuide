@@ -1,38 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:bottom="2dp"
-        android:left="2dp"
-        android:right="2dp"
-        android:top="2dp">
+        android:bottom="@dimen/indicator_unchecked_padding_size"
+        android:left="@dimen/indicator_unchecked_padding_size"
+        android:right="@dimen/indicator_unchecked_padding_size"
+        android:top="@dimen/indicator_unchecked_padding_size"
+        >
         <shape android:shape="oval">
             <padding
-                android:bottom="1dp"
-                android:right="1dp"/>
+                android:bottom="@dimen/indicator_unchecked_shape_padding_size"
+                android:left="@dimen/indicator_unchecked_shape_padding_size"
+                android:right="@dimen/indicator_unchecked_shape_padding_size"
+                android:top="@dimen/indicator_unchecked_shape_padding_size"
+                />
+
             <size
-                android:width="12dp"
-                android:height="12dp"/>
+                android:width="8dp"
+                android:height="8dp"/>
             <corners android:radius="8dp"/>
             <gradient
                 android:angle="90"
-                android:centerColor="#aa000000"
-                android:endColor="#aaffffff"
-                android:startColor="#aa000000"/>
+                android:centerColor="#00000000"
+                android:endColor="#00000000"
+                android:startColor="#44000000"/>
         </shape>
     </item>
     <item
-        android:bottom="2dp"
-        android:left="2dp"
-        android:right="2dp"
-        android:top="2dp">
+        >
         <shape android:shape="oval">
             <padding
-                android:bottom="1dp"
-                android:left="1dp"
-                android:right="1dp"/>
+                android:bottom="@dimen/indicator_unchecked_padding_size"
+                android:left="@dimen/indicator_unchecked_padding_size"
+                android:right="@dimen/indicator_unchecked_padding_size"
+                android:top="@dimen/indicator_unchecked_padding_size"
+                />
             <size
-                android:width="12dp"
-                android:height="12dp"/>
+                android:width="8dp"
+                android:height="8dp"/>
             <solid android:color="#CCffffff"/>
             <corners android:radius="6dp"/>
         </shape>

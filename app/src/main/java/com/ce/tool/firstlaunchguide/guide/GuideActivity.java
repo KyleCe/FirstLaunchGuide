@@ -22,9 +22,9 @@ public class GuideActivity extends Activity {
         mGuideView= new GuideView(getApplicationContext());
         root.addView(mGuideView);
 
-        mGuideView.assignButtonClick(new GuideView.ButtonClick() {
+        mGuideView.veryFirstAssignButtonClickAndInit(new GuideView.ButtonClick() {
             @Override
-            public void onClick() {
+            public void onButtonClick() {
                 sop("click");
             }
         });

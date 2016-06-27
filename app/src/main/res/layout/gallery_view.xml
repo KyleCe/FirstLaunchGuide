@@ -20,7 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal|bottom"
-        android:layout_marginBottom="240dp"
+        android:layout_marginBottom="70dp"
         android:orientation="vertical">
 
         <TextView
@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:padding="20dp"
-            android:text="New variety of view"
+            tools:text="New variety of view"
             android:textAppearance="?android:attr/textAppearance"
             android:textColor="@android:color/white"
             android:textSize="30sp"
@@ -42,10 +42,27 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:maxLines="3"
+            android:layout_marginBottom="70dp"
             android:lines="3"
-            android:text="One view, multiple modes\n Manager by accounts and enjoy \n your independence"
+            tools:text="One view, multiple modes\n Manager by accounts and enjoy \n your independence"
             android:textColor="@android:color/white"
             android:textSize="24sp"
+            />
+
+
+        <Button
+            android:id="@+id/create_account_btn_on_last_page"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_horizontal|bottom"
+            android:background="@drawable/guide_view_create_account_btn_style"
+            android:text="Create an account"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="24sp"
+            android:enabled="false"
+            android:visibility="invisible"
+            tools:visibility="visible"
             />
     </LinearLayout>
 </FrameLayout>

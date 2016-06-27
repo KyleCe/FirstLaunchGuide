@@ -2,4 +2,11 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+
+
+    <dimen name="indicator_size">12dp</dimen>
+    <dimen name="indicator_checked_padding_size">1dp</dimen>
+    <dimen name="indicator_unchecked_padding_size">3dp</dimen>
+    <dimen name="indicator_unchecked_shape_padding_size">4dp</dimen>
+    <dimen name="create_account_button_radius">5dp</dimen>
 </resources>

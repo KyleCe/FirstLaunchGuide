@@ -20,14 +20,17 @@ public class GuideView extends FrameLayout {
 
     private ButtonClick mButtonClick;
 
-    private View mCreateAccountButton;
+    private GuideImageAdapter mGuideImageAdapter;
+
+    private View mBaseView;
 
     public interface ButtonClick {
-        void onClick();
+        void onButtonClick();
     }
 
-    public void assignButtonClick(ButtonClick click) {
+    public void veryFirstAssignButtonClickAndInit(ButtonClick click) {
         mButtonClick = click;
+        setViewPagerAndIndicator(mBaseView);
     }
 
     public GuideView(Context context) {
@@ -44,28 +47,20 @@ public class GuideView extends FrameLayout {
     }
 
     private void init(Context context) {
-        View base = LayoutInflater.from(context).inflate(R.layout.guide_view_layout, this);
-        setViewPagerAndIndicator(base);
-
-        mCreateAccountButton = base.findViewById(R.id.create_account_btn);
-
-        mCreateAccountButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (mButtonClick == null) return;
-                mButtonClick.onClick();
-            }
-        });
+        mBaseView = LayoutInflater.from(context).inflate(R.layout.guide_view_layout, this);
     }
 
-    public void enableButtonAndClickable(boolean clickable){
-        mCreateAccountButton.setClickable(clickable);
-        mCreateAccountButton.setEnabled(true);
+    /**
+     * @throws NullPointerException if not init callback first
+     */
+    public void enableButtonAndClickable(boolean clickable) {
+        if (mGuideImageAdapter != null) mGuideImageAdapter.enableButtonAndClickable(clickable);
+        else throw new NullPointerException(" init callback first");
     }
 
     private void setViewPagerAndIndicator(View v) {
 
-        GuideImageAdapter adapter = new GuideImageAdapter(getContext());
+        mGuideImageAdapter = new GuideImageAdapter(getContext(), mButtonClick);
         mViewPager = (GuideSmoothViewPager) v.findViewById(R.id.guide_view_pager);
 
         final RadioGroup radioGroup = (RadioGroup) v.findViewById(R.id.radiogroup);
@@ -97,7 +92,7 @@ public class GuideView extends FrameLayout {
 
             }
         });
-        mViewPager.setAdapter(adapter);
+        mViewPager.setAdapter(mGuideImageAdapter);
     }
 
 }

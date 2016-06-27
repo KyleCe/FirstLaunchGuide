@@ -10,10 +10,12 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ce.tool.firstlaunchguide.R;
+import com.ce.tool.firstlaunchguide.guide.util.ViewU;
 
 /**
  * Created by KyleCe on 2016/6/3.
@@ -43,11 +45,24 @@ public class GuideImageAdapter extends PagerAdapter {
 
     private Context mContext;
 
-    public GuideImageAdapter() {
+    private GuideView.ButtonClick mButtonClick;
+
+    private Button mCreateAccountButton;
+
+    private boolean mIsButtonClickable = false;
+
+    public GuideImageAdapter(Context context, GuideView.ButtonClick click) {
+        mContext = context;
+        mButtonClick = click;
     }
 
-    public GuideImageAdapter(Context context) {
-        mContext = context;
+    public void enableButtonAndClickable(boolean clickable) {
+        mIsButtonClickable = clickable;
+    }
+
+    private void setButtonClickable() {
+        mCreateAccountButton.setClickable(mIsButtonClickable);
+        mCreateAccountButton.setEnabled(true);
     }
 
     public int getCount() {
@@ -65,7 +80,6 @@ public class GuideImageAdapter extends PagerAdapter {
     @Override
     public Object instantiateItem(ViewGroup container, final int position) {
 
-
         LayoutInflater inflater = (LayoutInflater) container.getContext()
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
@@ -81,6 +95,19 @@ public class GuideImageAdapter extends PagerAdapter {
         if (!TextUtils.isEmpty(mDescription[position])) description.setText(mDescription[position]);
 
         container.addView(convertView, 0);
+
+
+        mCreateAccountButton = (Button) convertView.findViewById(R.id.create_account_btn_on_last_page);
+        if (position == getCount() - 1) {
+            ViewU.show(mCreateAccountButton);
+            setButtonClickable();
+            mCreateAccountButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (mButtonClick != null) mButtonClick.onButtonClick();
+                }
+            });
+        } else ViewU.invisible(mCreateAccountButton);
 
         return convertView;
     }
@@ -118,4 +145,5 @@ public class GuideImageAdapter extends PagerAdapter {
     public void destroyItem(ViewGroup container, int position, Object object) {
         container.removeView((ViewGroup) object);
     }
+
 }
