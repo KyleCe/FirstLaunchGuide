@@ -16,53 +16,83 @@
     </ImageView>
 
     <LinearLayout
-        android:id="@+id/about_text_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal|bottom"
-        android:layout_marginBottom="70dp"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="2"
+        >
 
-        <TextView
-            android:id="@+id/guide_title"
+        <View
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:padding="20dp"
-            tools:text="New variety of view"
-            android:textAppearance="?android:attr/textAppearance"
-            android:textColor="@android:color/white"
-            android:textSize="30sp"
-            android:textStyle="bold"/>
-
-
-        <TextView
-            android:id="@+id/guide_description"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:maxLines="3"
-            android:layout_marginBottom="70dp"
-            android:lines="3"
-            tools:text="One view, multiple modes\n Manager by accounts and enjoy \n your independence"
-            android:textColor="@android:color/white"
-            android:textSize="24sp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             />
 
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
 
-        <Button
-            android:id="@+id/create_account_btn_on_last_page"
-            android:layout_width="300dp"
-            android:layout_height="60dp"
-            android:layout_gravity="center_horizontal|bottom"
-            android:background="@drawable/guide_view_create_account_btn_style"
-            android:text="Create an account"
-            android:textAllCaps="false"
-            android:textColor="@android:color/white"
-            android:textSize="24sp"
-            android:enabled="false"
-            android:visibility="invisible"
-            tools:visibility="visible"
-            />
+
+            <LinearLayout
+                android:id="@+id/about_text_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/guide_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:lineSpacingExtra="6sp"
+                    android:paddingBottom="20dp"
+                    android:paddingEnd="20dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:paddingStart="20dp"
+                    android:textAppearance="?android:attr/textAppearance"
+                    android:textColor="@android:color/white"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    tools:text="New variety of desktop"/>v try with yourself
+
+                <TextView
+                    android:id="@+id/guide_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="45dp"
+                    android:gravity="center"
+                    android:lineSpacingExtra="15sp"
+                    android:maxLines="3"
+                    android:textColor="@android:color/white"
+                    android:textSize="24sp"
+                    tools:text="One desktop, multiple modes\n Manager by accounts and enjoy \n your independence"
+                    tools:visibility="gone"
+                    />
+
+                <Button
+                    android:id="@+id/create_account_btn_on_last_page"
+                    android:layout_width="300dp"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/guide_view_create_account_btn_style"
+                    android:enabled="false"
+                    android:text="Create an account"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/white"
+                    android:textSize="24sp"
+                    android:visibility="gone"
+                    tools:visibility="visible"
+                    />
+
+            </LinearLayout>
+
+
+        </FrameLayout>
+
+
     </LinearLayout>
 </FrameLayout>

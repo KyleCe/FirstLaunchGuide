@@ -7,6 +7,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.v4.view.PagerAdapter;
 import android.text.TextUtils;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -99,6 +100,8 @@ public class GuideImageAdapter extends PagerAdapter {
 
         mCreateAccountButton = (Button) convertView.findViewById(R.id.create_account_btn_on_last_page);
         if (position == getCount() - 1) {
+            title.setTextSize(TypedValue.COMPLEX_UNIT_SP, 27);
+
             ViewU.show(mCreateAccountButton);
             setButtonClickable();
             mCreateAccountButton.setOnClickListener(new View.OnClickListener() {
@@ -107,7 +110,14 @@ public class GuideImageAdapter extends PagerAdapter {
                     if (mButtonClick != null) mButtonClick.onButtonClick();
                 }
             });
-        } else ViewU.invisible(mCreateAccountButton);
+
+            if (TextUtils.isEmpty(mDescription[position])) ViewU.hide(description);
+        } else {
+            title.setTextSize(TypedValue.COMPLEX_UNIT_SP, 30);
+            ViewU.invisible(mCreateAccountButton);
+
+            ViewU.show(description);
+        }
 
         return convertView;
     }

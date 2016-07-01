@@ -23,7 +23,9 @@
             android:layout_width="@dimen/indicator_size"
             android:layout_height="@dimen/indicator_size"
             android:button="@drawable/guide_page_indicator"
-            android:checked="true"/>
+            android:checked="true"
+            android:clickable="false"
+            />
 
         <RadioButton
             android:id="@+id/radioButton2"
@@ -31,6 +33,7 @@
             android:layout_height="@dimen/indicator_size"
             android:layout_marginLeft="13dp"
             android:button="@drawable/guide_page_indicator"
+            android:clickable="false"
             />
 
         <RadioButton
@@ -39,6 +42,7 @@
             android:layout_height="@dimen/indicator_size"
             android:layout_marginLeft="13dp"
             android:button="@drawable/guide_page_indicator"
+            android:clickable="false"
             />
 
         <RadioButton
@@ -47,6 +51,7 @@
             android:layout_height="@dimen/indicator_size"
             android:layout_marginLeft="13dp"
             android:button="@drawable/guide_page_indicator"
+            android:clickable="false"
             />
     </RadioGroup>
 </merge>
